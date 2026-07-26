@@ -1,0 +1,224 @@
+:root {
+  --bg-primary: #050505;
+  --bg-secondary: #0a0a0a;
+  --bg-card: rgba(15, 15, 15, 0.7);
+  --accent-cyan: #00f0ff;
+  --accent-purple: #b026ff;
+  --accent-orange: #ff8a00;
+  --accent-green: #00ff66;
+  --text-primary: #ffffff;
+  --text-secondary: #a3a3a3;
+  --border-color: rgba(255, 255, 255, 0.05);
+  --font-sans: var(--font-inter), sans-serif;
+  --font-title: var(--font-outfit), sans-serif;
+}
+
+* {
+  box-sizing: border-box;
+  padding: 0;
+  margin: 0;
+}
+
+html {
+  font-family: var(--font-sans);
+  color-scheme: dark;
+  background-color: var(--bg-primary);
+  color: var(--text-primary);
+  overflow-x: hidden;
+  scroll-behavior: smooth;
+}
+
+body {
+  background-color: var(--bg-primary);
+  color: var(--text-primary);
+  min-height: 100vh;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  line-height: 1.5;
+  overflow-x: hidden;
+  position: relative;
+}
+
+/* Drifting background glowing blobs */
+.bg-blobs-container {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 0;
+  pointer-events: none;
+  overflow: hidden;
+}
+
+.blob-1 {
+  position: absolute;
+  top: 15%;
+  left: 5%;
+  width: min(500px, 60vw);
+  height: min(500px, 60vw);
+  background: radial-gradient(circle, rgba(0, 240, 255, 0.07) 0%, transparent 70%);
+  filter: blur(80px);
+  animation: driftBlob1 25s infinite alternate ease-in-out;
+}
+
+.blob-2 {
+  position: absolute;
+  bottom: 15%;
+  right: 5%;
+  width: min(600px, 70vw);
+  height: min(600px, 70vw);
+  background: radial-gradient(circle, rgba(176, 38, 255, 0.06) 0%, transparent 70%);
+  filter: blur(100px);
+  animation: driftBlob2 30s infinite alternate ease-in-out;
+}
+
+.blob-3 {
+  position: absolute;
+  top: 50%;
+  left: 40%;
+  width: min(400px, 50vw);
+  height: min(400px, 50vw);
+  background: radial-gradient(circle, rgba(255, 138, 0, 0.04) 0%, transparent 70%);
+  filter: blur(90px);
+  animation: driftBlob3 22s infinite alternate ease-in-out;
+}
+
+@keyframes driftBlob1 {
+  0% { transform: translate(0, 0) scale(1); }
+  33% { transform: translate(50px, -40px) scale(1.1); }
+  66% { transform: translate(-30px, 60px) scale(0.9); }
+  100% { transform: translate(0, 0) scale(1); }
+}
+
+@keyframes driftBlob2 {
+  0% { transform: translate(0, 0) scale(1); }
+  50% { transform: translate(-80px, 60px) scale(1.15); }
+  100% { transform: translate(60px, -40px) scale(0.9); }
+}
+
+@keyframes driftBlob3 {
+  0% { transform: translate(0, 0) scale(1); }
+  50% { transform: translate(80px, -80px) scale(0.85); }
+  100% { transform: translate(-40px, 50px) scale(1.05); }
+}
+
+/* Scrollbar styling */
+::-webkit-scrollbar {
+  width: 8px;
+}
+::-webkit-scrollbar-track {
+  background: var(--bg-primary);
+}
+::-webkit-scrollbar-thumb {
+  background: #222;
+  border-radius: 4px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: #333;
+}
+
+/* Section sizing - flexible block flow layout */
+section {
+  position: relative;
+  z-index: 1;
+  width: 100%;
+  display: block;
+}
+
+@media (min-width: 901px) {
+  section {
+    padding: 90px 0;
+  }
+}
+
+@media (max-width: 900px) {
+  section {
+    padding: 60px 0;
+  }
+}
+
+/* Typography settings */
+h1, h2, h3, h4, h5, h6 {
+  font-family: var(--font-title);
+  font-weight: 700;
+  letter-spacing: -0.02em;
+}
+
+p {
+  color: var(--text-secondary);
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+/* Neon Glows & Utilities */
+.neon-cyan-text {
+  color: var(--accent-cyan);
+  text-shadow: 0 0 10px rgba(0, 240, 255, 0.4), 0 0 20px rgba(0, 240, 255, 0.2);
+}
+
+.neon-purple-text {
+  color: var(--accent-purple);
+  text-shadow: 0 0 10px rgba(176, 38, 255, 0.4), 0 0 20px rgba(176, 38, 255, 0.2);
+}
+
+.neon-orange-text {
+  color: var(--accent-orange);
+  text-shadow: 0 0 10px rgba(255, 138, 0, 0.4), 0 0 20px rgba(255, 138, 0, 0.2);
+}
+
+.neon-cyan-glow {
+  box-shadow: 0 0 15px rgba(0, 240, 255, 0.2), inset 0 0 15px rgba(0, 240, 255, 0.05);
+  border: 1px solid rgba(0, 240, 255, 0.2) !important;
+}
+
+/* Glassmorphism card */
+.glass-card {
+  background: var(--bg-card);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border: 1px solid var(--border-color);
+  border-radius: 16px;
+  transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+/* Animations */
+@keyframes float-y-1 {
+  0%, 100% { transform: translateY(0px) rotate(0deg); }
+  50% { transform: translateY(-12px) rotate(0.8deg); }
+}
+
+@keyframes float-y-2 {
+  0%, 100% { transform: translateY(0px) rotate(0deg); }
+  50% { transform: translateY(-20px) rotate(-1deg); }
+}
+
+@keyframes float-y-3 {
+  0%, 100% { transform: translateY(0px) rotate(0deg); }
+  50% { transform: translateY(-8px) rotate(1.2deg); }
+}
+
+.floating-1 {
+  animation: float-y-1 6s ease-in-out infinite;
+}
+
+.floating-2 {
+  animation: float-y-2 8s ease-in-out infinite;
+}
+
+.floating-3 {
+  animation: float-y-3 5s ease-in-out infinite;
+}
+
+/* Custom layout utility classes */
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 24px;
+  position: relative;
+  z-index: 1;
+}

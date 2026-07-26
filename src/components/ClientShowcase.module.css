@@ -1,0 +1,98 @@
+.marqueeContainer {
+  background-color: var(--bg-primary);
+  border-top: 1px solid rgba(255, 255, 255, 0.02);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.02);
+  padding: 30px 0;
+  position: relative;
+  overflow: hidden;
+  z-index: 5;
+}
+
+.sectionTitle {
+  text-align: center;
+  margin-bottom: 16px;
+}
+
+.sectionTitle span {
+  font-size: 0.72rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.2em;
+  color: var(--text-secondary);
+  opacity: 0.6;
+}
+
+.marqueeWrapper {
+  width: 100%;
+  overflow: hidden;
+  position: relative;
+  display: flex;
+  /* Premium visual fade mask at left and right boundaries */
+  mask-image: linear-gradient(to right, transparent, #000 15%, #000 85%, transparent);
+  -webkit-mask-image: linear-gradient(to right, transparent, #000 15%, #000 85%, transparent);
+}
+
+.marqueeTrack {
+  display: flex;
+  gap: 50px;
+  width: max-content;
+  animation: scroll 40s linear infinite;
+  align-items: center;
+}
+
+.marqueeTrack:hover {
+  animation-play-state: paused;
+}
+
+.marqueeItem {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  flex-shrink: 0;
+}
+
+.glowDot {
+  color: var(--accent-cyan);
+  font-size: 1.5rem;
+  text-shadow: 0 0 8px rgba(0, 240, 255, 0.8);
+  line-height: 1;
+}
+
+.clientName {
+  font-family: var(--font-title);
+  font-size: 1.2rem;
+  font-weight: 700;
+  color: var(--text-secondary);
+  opacity: 0.5;
+  transition: all 0.3s ease;
+  white-space: nowrap;
+}
+
+.marqueeItem:hover .clientName {
+  opacity: 0.9;
+  color: #fff;
+  text-shadow: 0 0 10px rgba(255, 255, 255, 0.15);
+}
+
+@keyframes scroll {
+  0% {
+    transform: translateX(0);
+  }
+  100% {
+    /* Translate by exactly one full copy height/width (1/3 of the container width) */
+    transform: translateX(calc(-100% / 3));
+  }
+}
+
+@media (max-width: 768px) {
+  .marqueeContainer {
+    padding: 24px 0;
+  }
+  .clientName {
+    font-size: 1rem;
+  }
+  .marqueeTrack {
+    gap: 35px;
+    animation-duration: 30s;
+  }
+}

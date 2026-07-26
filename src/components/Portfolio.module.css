@@ -1,0 +1,367 @@
+.portfolioSection {
+  background-color: var(--bg-primary);
+  position: relative;
+  overflow: hidden;
+}
+
+.sectionHeader {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-end;
+  margin-bottom: 50px;
+  flex-wrap: wrap;
+  gap: 24px;
+}
+
+.titleWrapper {
+  display: flex;
+  flex-direction: column;
+}
+
+.subTitle {
+  font-size: 0.85rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.25em;
+  color: var(--accent-purple);
+  margin-bottom: 12px;
+}
+
+.mainTitle {
+  font-size: 2.75rem;
+  font-weight: 800;
+  background: linear-gradient(135deg, #fff 60%, var(--text-secondary));
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+/* Glassmorphic Filter Controls */
+.filterControls {
+  display: flex;
+  gap: 8px;
+  background: rgba(255, 255, 255, 0.02);
+  border: 1px solid rgba(255, 255, 255, 0.05);
+  padding: 6px;
+  border-radius: 30px;
+  list-style: none;
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+}
+
+.filterBtn {
+  background: transparent;
+  border: none;
+  color: var(--text-secondary);
+  font-size: 0.85rem;
+  font-weight: 600;
+  padding: 8px 22px;
+  border-radius: 20px;
+  cursor: pointer;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.filterBtn:hover {
+  color: #fff;
+}
+
+.activeFilterBtn {
+  background: var(--accent-cyan);
+  color: #000 !important;
+  box-shadow: 0 0 15px rgba(0, 240, 255, 0.4);
+}
+
+/* Bento Grid Layout */
+.portfolioGrid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  grid-auto-rows: 230px;
+  gap: 24px;
+  margin-bottom: 50px;
+}
+
+.gridItem {
+  position: relative;
+  border-radius: 24px;
+  overflow: hidden;
+  background: #080808;
+  border: 1px solid rgba(255, 255, 255, 0.03);
+  cursor: pointer;
+  transition: all 0.6s cubic-bezier(0.25, 1, 0.5, 1);
+}
+
+/* Col/Row Spanning for Bento Grid */
+.bentoLarge {
+  grid-column: span 2;
+  grid-row: span 2;
+}
+
+.bentoTall {
+  grid-column: span 1;
+  grid-row: span 2;
+}
+
+.bentoWide {
+  grid-column: span 2;
+  grid-row: span 1;
+}
+
+/* Grid Item Hover Styles */
+.gridItem:hover {
+  transform: translateY(-6px);
+}
+
+.gridItem.cyanHover:hover {
+  border-color: rgba(0, 240, 255, 0.45);
+  box-shadow: 0 15px 35px rgba(0, 240, 255, 0.22), inset 0 0 20px rgba(0, 240, 255, 0.08);
+}
+
+.gridItem.purpleHover:hover {
+  border-color: rgba(176, 38, 255, 0.45);
+  box-shadow: 0 15px 35px rgba(176, 38, 255, 0.22), inset 0 0 20px rgba(176, 38, 255, 0.08);
+}
+
+.gridItem.orangeHover:hover {
+  border-color: rgba(255, 138, 0, 0.45);
+  box-shadow: 0 15px 35px rgba(255, 138, 0, 0.22), inset 0 0 20px rgba(255, 138, 0, 0.08);
+}
+
+.itemImage {
+  object-fit: cover;
+  transition: transform 0.8s cubic-bezier(0.25, 1, 0.5, 1);
+}
+
+.gridItem:hover .itemImage {
+  transform: scale(1.06);
+}
+
+/* Category Glow Tag */
+.cardTag {
+  position: absolute;
+  top: 20px;
+  left: 20px;
+  padding: 6px 14px;
+  border-radius: 30px;
+  font-size: 0.7rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  z-index: 10;
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+  pointer-events: none;
+}
+
+.tagCyan {
+  background: rgba(0, 240, 255, 0.08);
+  border: 1px solid rgba(0, 240, 255, 0.2);
+  color: var(--accent-cyan);
+}
+
+.tagPurple {
+  background: rgba(176, 38, 255, 0.08);
+  border: 1px solid rgba(176, 38, 255, 0.2);
+  color: var(--accent-purple);
+}
+
+.tagOrange {
+  background: rgba(255, 138, 0, 0.08);
+  border: 1px solid rgba(255, 138, 0, 0.2);
+  color: var(--accent-orange);
+}
+
+/* Glass Overlay Details */
+.itemOverlay {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  padding: 30px;
+  background: linear-gradient(to top, rgba(5, 5, 5, 0.95) 0%, rgba(5, 5, 5, 0.4) 50%, transparent 100%);
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  transition: all 0.5s cubic-bezier(0.25, 1, 0.5, 1);
+  z-index: 2;
+}
+
+.gridItem:hover .itemOverlay {
+  background: linear-gradient(to top, rgba(5, 5, 5, 0.98) 0%, rgba(5, 5, 5, 0.6) 65%, rgba(5, 5, 5, 0.2) 100%);
+  backdrop-filter: blur(4px);
+  -webkit-backdrop-filter: blur(4px);
+}
+
+.cyanText { color: var(--accent-cyan); }
+.purpleText { color: var(--accent-purple); }
+.orangeText { color: var(--accent-orange); }
+
+.itemTitle {
+  font-size: 1.35rem;
+  font-weight: 800;
+  color: #fff;
+  margin-bottom: 6px;
+}
+
+.itemDesc {
+  font-size: 0.85rem;
+  color: var(--text-secondary);
+  line-height: 1.5;
+  max-width: 85%;
+  opacity: 0;
+  transform: translateY(15px);
+  transition: all 0.5s cubic-bezier(0.25, 1, 0.5, 1) 0.05s;
+}
+
+.gridItem:hover .itemDesc {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* Arrow Reveal Button */
+.arrowBtn {
+  position: absolute;
+  bottom: 30px;
+  right: 30px;
+  width: 44px;
+  height: 44px;
+  border-radius: 50%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  background: rgba(255, 255, 255, 0.02);
+  color: #fff;
+  opacity: 0;
+  transform: scale(0.8) rotate(-45deg);
+  transition: all 0.45s cubic-bezier(0.25, 1, 0.5, 1);
+}
+
+.gridItem:hover .arrowBtn {
+  opacity: 1;
+  transform: scale(1) rotate(0deg);
+}
+
+.gridItem.cyanHover:hover .arrowBtn {
+  border-color: var(--accent-cyan);
+  background: rgba(0, 240, 255, 0.05);
+  color: var(--accent-cyan);
+  box-shadow: 0 0 10px rgba(0, 240, 255, 0.3);
+}
+
+.gridItem.purpleHover:hover .arrowBtn {
+  border-color: var(--accent-purple);
+  background: rgba(176, 38, 255, 0.05);
+  color: var(--accent-purple);
+  box-shadow: 0 0 10px rgba(176, 38, 255, 0.3);
+}
+
+.gridItem.orangeHover:hover .arrowBtn {
+  border-color: var(--accent-orange);
+  background: rgba(255, 138, 0, 0.05);
+  color: var(--accent-orange);
+  box-shadow: 0 0 10px rgba(255, 138, 0, 0.3);
+}
+
+/* Call to Action Button */
+.ctaWrapper {
+  display: flex;
+  justify-content: center;
+  margin-top: 50px;
+}
+
+.loadMoreBtn {
+  background: transparent;
+  color: #fff;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  padding: 14px 32px;
+  border-radius: 30px;
+  font-size: 0.95rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.loadMoreBtn:hover {
+  background: rgba(255, 255, 255, 0.05);
+  border-color: var(--accent-purple);
+  box-shadow: 0 0 15px rgba(176, 38, 255, 0.2);
+  transform: translateY(-2px);
+}
+
+/* Responsive Grid Adjustments */
+@media (max-width: 1100px) {
+  .portfolioGrid {
+    grid-template-columns: repeat(3, 1fr);
+    grid-auto-rows: 210px;
+    gap: 20px;
+  }
+  
+  .bentoLarge {
+    grid-column: span 2;
+    grid-row: span 2;
+  }
+  
+  .bentoTall {
+    grid-column: span 1;
+    grid-row: span 2;
+  }
+  
+  .bentoWide {
+    grid-column: span 2;
+    grid-row: span 1;
+  }
+}
+
+@media (max-width: 900px) {
+  .portfolioGrid {
+    grid-template-columns: repeat(2, 1fr);
+    grid-auto-rows: 220px;
+  }
+  
+  .bentoLarge {
+    grid-column: span 2;
+    grid-row: span 1;
+  }
+  
+  .bentoTall {
+    grid-column: span 1;
+    grid-row: span 1;
+  }
+  
+  .bentoWide {
+    grid-column: span 2;
+    grid-row: span 1;
+  }
+}
+
+@media (max-width: 768px) {
+  .sectionHeader {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+  
+  .mainTitle {
+    font-size: 2.2rem;
+  }
+  
+  .portfolioGrid {
+    grid-template-columns: 1fr;
+    grid-auto-rows: 250px;
+  }
+  
+  .bentoLarge, .bentoTall, .bentoWide {
+    grid-column: span 1;
+    grid-row: span 1;
+  }
+  
+  .itemDesc {
+    opacity: 0.8;
+    transform: translateY(0);
+    max-width: 100%;
+  }
+  
+  .arrowBtn {
+    opacity: 1;
+    transform: scale(1) rotate(0deg);
+  }
+}

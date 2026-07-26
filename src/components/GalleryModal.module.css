@@ -1,0 +1,388 @@
+.modalOverlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background: rgba(5, 5, 5, 0.82);
+  backdrop-filter: blur(22px);
+  -webkit-backdrop-filter: blur(22px);
+  z-index: 1000;
+  display: flex;
+  justify-content: center;
+  overflow-y: auto;
+  padding: 60px 24px;
+  animation: fadeIn 0.4s cubic-bezier(0.25, 1, 0.5, 1);
+  scrollbar-width: thin;
+  scrollbar-color: rgba(255, 255, 255, 0.1) transparent;
+}
+
+.modalOverlay::-webkit-scrollbar {
+  width: 6px;
+}
+
+.modalOverlay::-webkit-scrollbar-thumb {
+  background: rgba(255, 255, 255, 0.15);
+  border-radius: 4px;
+}
+
+.modalOverlay::-webkit-scrollbar-thumb:hover {
+  background: rgba(255, 255, 255, 0.3);
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+/* Glowing background aesthetic blobs inside the modal */
+.modalBgBlobs {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  overflow: hidden;
+  pointer-events: none;
+  z-index: 1;
+}
+
+.blob1 {
+  position: absolute;
+  top: 10%;
+  left: 5%;
+  width: 40vw;
+  height: 40vw;
+  background: radial-gradient(circle, rgba(0, 240, 255, 0.04) 0%, transparent 70%);
+  filter: blur(60px);
+}
+
+.blob2 {
+  position: absolute;
+  bottom: 20%;
+  right: 5%;
+  width: 45vw;
+  height: 45vw;
+  background: radial-gradient(circle, rgba(176, 38, 255, 0.04) 0%, transparent 70%);
+  filter: blur(60px);
+}
+
+/* Close button - Glassmorphic */
+.closeBtn {
+  position: fixed;
+  top: 24px;
+  right: 24px;
+  width: 48px;
+  height: 48px;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.03);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  color: rgba(255, 255, 255, 0.75);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
+  z-index: 1010;
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.closeBtn:hover {
+  background: rgba(255, 255, 255, 0.08);
+  border-color: var(--accent-cyan, #00f0ff);
+  color: #fff;
+  transform: rotate(90deg) scale(1.05);
+  box-shadow: 0 0 15px rgba(0, 240, 255, 0.35);
+}
+
+/* Main Modal Panel */
+.modalContent {
+  position: relative;
+  width: 100%;
+  max-width: 1200px;
+  z-index: 2;
+  display: flex;
+  flex-direction: column;
+  gap: 40px;
+}
+
+/* Header styling */
+.modalHeader {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  gap: 8px;
+  animation: slideDown 0.5s cubic-bezier(0.25, 1, 0.5, 1);
+}
+
+@keyframes slideDown {
+  from { transform: translateY(-20px); opacity: 0; }
+  to { transform: translateY(0); opacity: 1; }
+}
+
+.photoCount {
+  font-size: 0.75rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.2em;
+  color: var(--accent-purple, #b026ff);
+  background: rgba(176, 38, 255, 0.08);
+  padding: 6px 14px;
+  border-radius: 20px;
+  border: 1px solid rgba(176, 38, 255, 0.15);
+}
+
+.modalTitle {
+  font-size: 2.5rem;
+  font-weight: 900;
+  background: linear-gradient(135deg, #fff 50%, rgba(255, 255, 255, 0.6));
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  margin-top: 4px;
+}
+
+.modalDesc {
+  font-size: 0.95rem;
+  color: var(--text-secondary, #999);
+  max-width: 600px;
+  line-height: 1.6;
+}
+
+/* Photo Grid */
+.imageGrid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+  gap: 20px;
+  animation: scaleUp 0.5s cubic-bezier(0.25, 1, 0.5, 1) 0.1s both;
+}
+
+@keyframes scaleUp {
+  from { transform: scale(0.96); opacity: 0; }
+  to { transform: scale(1); opacity: 1; }
+}
+
+.gridItem {
+  position: relative;
+  aspect-ratio: 4/3;
+  border-radius: 16px;
+  overflow: hidden;
+  background: #0c0c0c;
+  border: 1px solid rgba(255, 255, 255, 0.02);
+  cursor: pointer;
+  transition: all 0.4s cubic-bezier(0.25, 1, 0.5, 1);
+}
+
+.gridItem:hover {
+  transform: translateY(-4px);
+  border-color: rgba(255, 255, 255, 0.1);
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.4);
+}
+
+.gridImage {
+  object-fit: cover;
+  opacity: 0;
+  transition: opacity 0.3s ease, transform 0.6s ease !important;
+}
+
+.imageLoaded {
+  opacity: 1;
+}
+
+.gridItem:hover .gridImage {
+  transform: scale(1.05);
+}
+
+/* Image Shimmer / Skeleton Loader */
+.shimmer {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(90deg, #0f0f0f 25%, #181818 50%, #0f0f0f 75%);
+  background-size: 200% 100%;
+  animation: loadingShimmer 1.5s infinite linear;
+}
+
+@keyframes loadingShimmer {
+  from { background-position: 200% 0; }
+  to { background-position: -200% 0; }
+}
+
+/* Grid Hover Overlay Icon */
+.gridItemHover {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.4);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: #fff;
+  opacity: 0;
+  transition: opacity 0.3s ease;
+  z-index: 5;
+}
+
+.gridItem:hover .gridItemHover {
+  opacity: 1;
+}
+
+/* Sub-Lightbox View (Single Image Zoomed-In Overlay) */
+.lightboxOverlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background: rgba(0, 0, 0, 0.94);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+  z-index: 2000;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  animation: fadeIn 0.3s ease;
+}
+
+.lightboxClose {
+  position: absolute;
+  top: 24px;
+  right: 24px;
+  width: 48px;
+  height: 48px;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.05);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  color: #fff;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  z-index: 2020;
+}
+
+.lightboxClose:hover {
+  background: rgba(255, 255, 255, 0.15);
+  transform: scale(1.05);
+}
+
+.lightboxImageContainer {
+  position: relative;
+  width: 85vw;
+  height: 80vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.lightboxImage {
+  max-width: 100%;
+  max-height: 100%;
+  user-select: none;
+  pointer-events: none;
+}
+
+/* Lightbox Navigation Buttons */
+.navBtnLeft, .navBtnRight {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 56px;
+  height: 56px;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.03);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  color: rgba(255, 255, 255, 0.7);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
+  backdrop-filter: blur(5px);
+  -webkit-backdrop-filter: blur(5px);
+  transition: all 0.2s ease;
+  z-index: 2010;
+}
+
+.navBtnLeft:hover, .navBtnRight:hover {
+  background: rgba(255, 255, 255, 0.1);
+  border-color: rgba(255, 255, 255, 0.25);
+  color: #fff;
+  transform: translateY(-50%) scale(1.05);
+}
+
+.navBtnLeft { left: 24px; }
+.navBtnRight { right: 24px; }
+
+/* Lightbox Info Caption Bar */
+.lightboxCaption {
+  position: absolute;
+  bottom: -40px;
+  left: 0;
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  color: rgba(255, 255, 255, 0.7);
+  font-size: 0.85rem;
+  font-weight: 500;
+  letter-spacing: 0.05em;
+  padding: 0 10px;
+}
+
+/* Responsive CSS Rules */
+@media (max-width: 900px) {
+  .modalOverlay {
+    padding: 60px 16px 40px 16px;
+  }
+  .modalTitle {
+    font-size: 2rem;
+  }
+  .navBtnLeft { left: 12px; }
+  .navBtnRight { right: 12px; }
+  .navBtnLeft, .navBtnRight {
+    width: 44px;
+    height: 44px;
+  }
+}
+
+@media (max-width: 600px) {
+  .modalTitle {
+    font-size: 1.75rem;
+  }
+  .imageGrid {
+    grid-template-columns: repeat(auto-fill, minmax(140px, 1fr));
+    gap: 12px;
+  }
+  .gridItem {
+    border-radius: 12px;
+  }
+  .closeBtn {
+    top: 12px;
+    right: 12px;
+    width: 40px;
+    height: 40px;
+  }
+  .lightboxClose {
+    top: 12px;
+    right: 12px;
+    width: 40px;
+    height: 40px;
+  }
+  .lightboxImageContainer {
+    width: 95vw;
+    height: 70vh;
+  }
+  .navBtnLeft, .navBtnRight {
+    display: none; /* Swipe is preferred on mobile, but keep tap/hide controls standard */
+  }
+  .lightboxCaption {
+    bottom: -30px;
+    font-size: 0.75rem;
+  }
+}
