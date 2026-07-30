@@ -12,6 +12,12 @@ export const eventItem = defineType({
       validation: (Rule) => Rule.required(),
     }),
     defineField({
+      name: 'order',
+      title: 'Order Position',
+      type: 'number',
+      description: 'Optional: Use numbers (e.g. 1, 2, 3) to manually control the display order. Lower numbers appear first.',
+    }),
+    defineField({
       name: 'categoryGroup',
       title: 'Event Category Group',
       type: 'reference',

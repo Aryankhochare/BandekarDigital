@@ -4,12 +4,12 @@ import { useState, useEffect } from 'react';
 import Image from 'next/image';
 import Link from 'next/link';
 import styles from './Events.module.css';
-import { eventData as staticEventData, EventItem } from '@/data/eventData';
+import { EventItem } from '@/data/eventData';
 import { getEventItems } from '@/sanity/lib/fetchEvents';
 import GalleryModal from './GalleryModal';
 
 export default function Events() {
-  const [events, setEvents] = useState<EventItem[]>(staticEventData);
+  const [events, setEvents] = useState<EventItem[]>([]);
   const [selectedEvent, setSelectedEvent] = useState<EventItem | null>(null);
   const [isModalOpen, setIsModalOpen] = useState(false);
 

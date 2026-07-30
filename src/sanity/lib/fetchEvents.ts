@@ -2,7 +2,7 @@ import { client } from './client'
 import { eventsQuery } from './queries'
 import { urlForImage } from './image'
 import { isSanityConfigured } from '../env'
-import { eventData as staticEventData, EventItem } from '@/data/eventData'
+import { EventItem } from '@/data/eventData'
 
 interface SanityImageReference {
   asset?: {
@@ -16,6 +16,7 @@ interface SanityImageReference {
 
 interface SanityEventItem {
   title: string;
+  order?: number;
   client?: string;
   date?: string;
   location?: string;
@@ -44,7 +45,8 @@ function isValidImageAsset(img: unknown): boolean {
 
 export async function getEventItems(): Promise<EventItem[]> {
   if (!isSanityConfigured) {
-    return staticEventData
+    console.warn('Sanity is not configured. Returning empty event items.')
+    return []
   }
 
   try {
@@ -86,15 +88,11 @@ export async function getEventItems(): Promise<EventItem[]> {
         }
       })
 
-      // Combine Sanity items at the front with static items, avoiding duplicates
-      const sanityTitles = new Set(mappedSanityItems.map(i => i.title.toLowerCase()))
-      const filteredStatic = staticEventData.filter(s => !sanityTitles.has(s.title.toLowerCase()))
-
-      return [...mappedSanityItems, ...filteredStatic]
+      return mappedSanityItems
     }
   } catch (error) {
-    console.warn('Sanity events fetch failed, falling back to static data:', error)
+    console.error('Failed to fetch event items from Sanity:', error)
   }
 
-  return staticEventData
+  return []
 }

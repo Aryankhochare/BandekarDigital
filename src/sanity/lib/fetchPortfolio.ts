@@ -16,6 +16,7 @@ interface SanityImageReference {
 
 interface SanityPortfolioItem {
   title: string;
+  order?: number;
   category?: string;
   desc?: string;
   coverImage?: SanityImageReference;

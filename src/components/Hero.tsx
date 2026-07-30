@@ -67,7 +67,7 @@ export default function Hero() {
         playsInline
         className={styles.bgVideo}
       >
-        <source src="/hero-main.mp4" type="video/mp4" />
+        <source src="https://cdn.sanity.io/files/7pct1njc/production/d9a38a0f5a0c28afee2befba7b70377fb8ad6ed5.mp4" type="video/mp4" />
       </video>
       <div className={styles.videoOverlay}></div>
 

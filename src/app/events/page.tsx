@@ -7,11 +7,11 @@ import Navbar from '@/components/Navbar';
 import Footer from '@/components/Footer';
 import GalleryModal from '@/components/GalleryModal';
 import { getEventItems } from '@/sanity/lib/fetchEvents';
-import { eventData as staticEvents, EventItem } from '@/data/eventData';
+import { EventItem } from '@/data/eventData';
 import styles from './eventsPage.module.css';
 
 export default function EventsPage() {
-  const [events, setEvents] = useState<EventItem[]>(staticEvents);
+  const [events, setEvents] = useState<EventItem[]>([]);
   const [searchQuery, setSearchQuery] = useState('');
   const [selectedLocation, setSelectedLocation] = useState('all');
   const [selectedType, setSelectedType] = useState('all');

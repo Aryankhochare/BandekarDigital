@@ -25,7 +25,7 @@ export default function Navbar() {
       <div className="container" style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', width: '100%' }}>
         <Link href={isHome ? '#home' : '/'} className={styles.logoArea}>
           <Image
-            src="/logo.jpg"
+            src="https://cdn.sanity.io/files/7pct1njc/production/47c5b894e9cf34ab2dab6fcf67a81a9cf3e3352c.jpg"
             alt="Bandekar's Digital Imaging Logo"
             width={42}
             height={42}

@@ -1,9 +1,10 @@
 import { groq } from 'next-sanity'
 
 export const portfolioQuery = groq`
-  *[_type == "portfolioItem"] | order(_createdAt desc) {
+  *[_type == "portfolioItem"] | order(order asc, _createdAt desc) {
     _id,
     title,
+    order,
     category,
     desc,
     "filterGroup": coalesce(filterGroup->value.current, filterGroup, "other"),
@@ -40,9 +41,10 @@ export const portfolioQuery = groq`
 `
 
 export const eventsQuery = groq`
-  *[_type == "eventItem"] | order(_createdAt desc) {
+  *[_type == "eventItem"] | order(order asc, _createdAt desc) {
     _id,
     title,
+    order,
     client,
     date,
     location,
