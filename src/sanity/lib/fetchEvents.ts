@@ -22,11 +22,24 @@ interface SanityEventItem {
   desc?: string;
   coverImage?: SanityImageReference;
   galleryImages?: SanityImageReference[];
+  galleryVideos?: { asset?: { _id?: string; url?: string } }[];
   tagClass?: string;
   hoverClass?: string;
   textClass?: string;
   categoryGroup?: string;
   categoryLabel?: string;
+}
+
+function isValidImageAsset(img: unknown): boolean {
+  if (!img || typeof img !== 'object') return false
+  const asset = (img as { asset?: { _ref?: string; _id?: string } }).asset
+  if (!asset) return false
+  const ref = asset._ref || asset._id || ''
+  if (!ref) return false
+  if (ref.startsWith('file-') || ref.includes('.mp4') || ref.includes('.mov') || ref.includes('.webm')) {
+    return false
+  }
+  return ref.startsWith('image-')
 }
 
 export async function getEventItems(): Promise<EventItem[]> {
@@ -40,9 +53,21 @@ export async function getEventItems(): Promise<EventItem[]> {
     if (sanityItems && sanityItems.length > 0) {
       const mappedSanityItems: EventItem[] = (sanityItems as SanityEventItem[]).map((item) => {
         const coverUrl = item.coverImage ? urlForImage(item.coverImage)?.url() || '' : ''
-        const galleryUrls = item.galleryImages
-          ? item.galleryImages.map((img) => urlForImage(img)?.url() || '').filter(Boolean)
-          : [coverUrl]
+        
+        const photoUrls = item.galleryImages
+          ? item.galleryImages.map((img) => {
+              if (isValidImageAsset(img)) {
+                return urlForImage(img)?.url() || ''
+              }
+              return img.asset?.url || ''
+            }).filter(Boolean)
+          : []
+
+        const videoUrls = item.galleryVideos
+          ? item.galleryVideos.map((vid) => vid.asset?.url || '').filter(Boolean)
+          : []
+
+        const galleryUrls = [...photoUrls, ...videoUrls]
 
         return {
           title: item.title,

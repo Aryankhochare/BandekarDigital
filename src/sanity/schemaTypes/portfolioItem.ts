@@ -12,13 +12,6 @@ export const portfolioItem = defineType({
       validation: (Rule) => Rule.required(),
     }),
     defineField({
-      name: 'category',
-      title: 'Category Name',
-      type: 'string',
-      description: 'e.g. Acrylic Signs & Logos, Custom Badges, etc.',
-      validation: (Rule) => Rule.required(),
-    }),
-    defineField({
       name: 'desc',
       title: 'Description',
       type: 'text',
@@ -50,10 +43,29 @@ export const portfolioItem = defineType({
       name: 'galleryImages',
       title: 'Gallery Images (Modal)',
       type: 'array',
+      options: {
+        layout: 'grid',
+      },
       of: [
         {
           type: 'image',
           options: { hotspot: true },
+        },
+      ],
+    }),
+    defineField({
+      name: 'galleryVideos',
+      title: 'Gallery Videos (Modal)',
+      type: 'array',
+      options: {
+        layout: 'grid',
+      },
+      of: [
+        {
+          type: 'file',
+          options: {
+            accept: 'video/*',
+          },
         },
       ],
     }),

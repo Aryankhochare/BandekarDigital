@@ -29,6 +29,12 @@ export const portfolioQuery = groq`
           lqip
         }
       }
+    },
+    galleryVideos[] {
+      asset-> {
+        _id,
+        url
+      }
     }
   }
 `
@@ -62,6 +68,12 @@ export const eventsQuery = groq`
         metadata {
           lqip
         }
+      }
+    },
+    galleryVideos[] {
+      asset-> {
+        _id,
+        url
       }
     }
   }

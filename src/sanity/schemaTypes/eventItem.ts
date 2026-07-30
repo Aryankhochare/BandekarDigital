@@ -54,10 +54,29 @@ export const eventItem = defineType({
       name: 'galleryImages',
       title: 'Gallery Images (Modal)',
       type: 'array',
+      options: {
+        layout: 'grid',
+      },
       of: [
         {
           type: 'image',
           options: { hotspot: true },
+        },
+      ],
+    }),
+    defineField({
+      name: 'galleryVideos',
+      title: 'Gallery Videos (Modal)',
+      type: 'array',
+      options: {
+        layout: 'grid',
+      },
+      of: [
+        {
+          type: 'file',
+          options: {
+            accept: 'video/*',
+          },
         },
       ],
     }),

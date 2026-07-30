@@ -4,12 +4,12 @@ import { useState, useEffect } from 'react';
 import Image from 'next/image';
 import Link from 'next/link';
 import styles from './Portfolio.module.css';
-import { portfolioData as initialStaticData, PortfolioCategory } from '@/data/portfolioData';
+import { PortfolioCategory } from '@/data/portfolioData';
 import { getPortfolioItems } from '@/sanity/lib/fetchPortfolio';
 import GalleryModal from './GalleryModal';
 
 export default function Portfolio() {
-  const [items, setItems] = useState<PortfolioCategory[]>(initialStaticData);
+  const [items, setItems] = useState<PortfolioCategory[]>([]);
   const [activeFilter, setActiveFilter] = useState<string>('all');
   const [selectedCategory, setSelectedCategory] = useState<PortfolioCategory | null>(null);
   const [isModalOpen, setIsModalOpen] = useState(false);
@@ -91,10 +91,6 @@ export default function Portfolio() {
               className={`${styles.gridItem} ${item.sizeClass ? styles[item.sizeClass] : ''} ${styles[item.hoverClass]}`}
               onClick={() => handleItemClick(item)}
             >
-              {/* Category Tag Badge */}
-              <div className={`${styles.cardTag} ${styles[item.tagClass]}`}>
-                {item.filterLabel}
-              </div>
 
               <Image
                 src={item.coverImage}

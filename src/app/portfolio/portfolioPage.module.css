@@ -292,6 +292,7 @@
   text-transform: uppercase;
   letter-spacing: 0.12em;
   margin-bottom: 8px;
+  transition: transform 0.4s cubic-bezier(0.25, 1, 0.5, 1);
 }
 
 .cyanText { color: var(--accent-cyan); }
@@ -304,6 +305,7 @@
   color: #fff;
   margin-bottom: 8px;
   line-height: 1.25;
+  transition: transform 0.4s cubic-bezier(0.25, 1, 0.5, 1);
 }
 
 .itemDesc {
@@ -312,15 +314,17 @@
   line-height: 1.5;
   max-width: 85%;
   opacity: 0;
-  height: 0;
+  max-height: 0;
   overflow: hidden;
-  transform: translateY(12px);
-  transition: all 0.5s cubic-bezier(0.25, 1, 0.5, 1);
+  transform: translateY(10px);
+  transition: max-height 0.4s cubic-bezier(0.25, 1, 0.5, 1),
+              opacity 0.4s ease,
+              transform 0.4s cubic-bezier(0.25, 1, 0.5, 1);
 }
 
 .gridItem:hover .itemDesc {
   opacity: 0.85;
-  height: auto;
+  max-height: 100px;
   transform: translateY(0);
 }
 

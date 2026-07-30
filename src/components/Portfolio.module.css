@@ -195,11 +195,21 @@
 .purpleText { color: var(--accent-purple); }
 .orangeText { color: var(--accent-orange); }
 
+.itemCategory {
+  font-size: 0.72rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.12em;
+  margin-bottom: 6px;
+  transition: transform 0.4s cubic-bezier(0.25, 1, 0.5, 1);
+}
+
 .itemTitle {
   font-size: 1.35rem;
   font-weight: 800;
   color: #fff;
   margin-bottom: 6px;
+  transition: transform 0.4s cubic-bezier(0.25, 1, 0.5, 1);
 }
 
 .itemDesc {
@@ -208,12 +218,17 @@
   line-height: 1.5;
   max-width: 85%;
   opacity: 0;
-  transform: translateY(15px);
-  transition: all 0.5s cubic-bezier(0.25, 1, 0.5, 1) 0.05s;
+  max-height: 0;
+  overflow: hidden;
+  transform: translateY(10px);
+  transition: max-height 0.4s cubic-bezier(0.25, 1, 0.5, 1),
+              opacity 0.4s ease,
+              transform 0.4s cubic-bezier(0.25, 1, 0.5, 1);
 }
 
 .gridItem:hover .itemDesc {
-  opacity: 1;
+  opacity: 0.85;
+  max-height: 100px;
   transform: translateY(0);
 }
 

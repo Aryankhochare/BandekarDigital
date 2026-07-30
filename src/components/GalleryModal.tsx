@@ -14,6 +14,18 @@ interface GalleryModalProps {
   onClose: () => void;
 }
 
+const isVideo = (path: string) => {
+  if (!path) return false;
+  const lowerPath = path.toLowerCase();
+  return (
+    lowerPath.endsWith('.mp4') ||
+    lowerPath.endsWith('.webm') ||
+    lowerPath.endsWith('.mov') ||
+    lowerPath.includes('/files/') ||
+    lowerPath.includes('.mp4')
+  );
+};
+
 export default function GalleryModal({ isOpen, category, onClose }: GalleryModalProps) {
   const [activeImageIndex, setActiveImageIndex] = useState<number | null>(null);
   const [loadedImages, setLoadedImages] = useState<Record<number, boolean>>({});
@@ -119,17 +131,29 @@ export default function GalleryModal({ isOpen, category, onClose }: GalleryModal
               onClick={() => setActiveImageIndex(idx)}
             >
               {/* Shimmer Placeholder */}
-              {!loadedImages[idx] && <div className={styles.shimmer}></div>}
+              {!loadedImages[idx] && !isVideo(imagePath) && <div className={styles.shimmer}></div>}
               
-              <Image
-                src={imagePath}
-                alt={`${category.title} detail photo ${idx + 1}`}
-                fill
-                sizes="(max-width: 600px) 100vw, (max-width: 900px) 50vw, (max-width: 1200px) 33vw, 25vw"
-                className={`${styles.gridImage} ${loadedImages[idx] ? styles.imageLoaded : ''}`}
-                onLoad={() => handleImageLoad(idx)}
-                loading="lazy"
-              />
+              {isVideo(imagePath) ? (
+                <video
+                  src={imagePath}
+                  className={`${styles.gridImage} ${styles.imageLoaded}`}
+                  muted
+                  playsInline
+                  autoPlay
+                  loop
+                  style={{ objectFit: 'cover', width: '100%', height: '100%', display: 'block' }}
+                />
+              ) : (
+                <Image
+                  src={imagePath}
+                  alt={`${category.title} detail photo ${idx + 1}`}
+                  fill
+                  sizes="(max-width: 600px) 100vw, (max-width: 900px) 50vw, (max-width: 1200px) 33vw, 25vw"
+                  className={`${styles.gridImage} ${loadedImages[idx] ? styles.imageLoaded : ''}`}
+                  onLoad={() => handleImageLoad(idx)}
+                  loading="lazy"
+                />
+              )}
 
               <div className={styles.gridItemHover}>
                 <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
@@ -163,15 +187,26 @@ export default function GalleryModal({ isOpen, category, onClose }: GalleryModal
 
           {/* Large Image Showcase */}
           <div className={styles.lightboxImageContainer} onClick={(e) => e.stopPropagation()}>
-            <Image
-              src={category.images[activeImageIndex]}
-              alt={`${category.title} large photo ${activeImageIndex + 1}`}
-              fill
-              sizes="90vw"
-              className={styles.lightboxImage}
-              style={{ objectFit: 'contain' }}
-              priority
-            />
+            {isVideo(category.images[activeImageIndex]) ? (
+              <video
+                src={category.images[activeImageIndex]}
+                controls
+                autoPlay
+                playsInline
+                className={styles.lightboxImage}
+                style={{ width: '100%', height: '100%', maxHeight: '80vh', outline: 'none' }}
+              />
+            ) : (
+              <Image
+                src={category.images[activeImageIndex]}
+                alt={`${category.title} large photo ${activeImageIndex + 1}`}
+                fill
+                sizes="90vw"
+                className={styles.lightboxImage}
+                style={{ objectFit: 'contain' }}
+                priority
+              />
+            )}
             
             {/* Lightbox Caption */}
             <div className={styles.lightboxCaption}>

@@ -7,11 +7,11 @@ import Navbar from '@/components/Navbar';
 import Footer from '@/components/Footer';
 import GalleryModal from '@/components/GalleryModal';
 import { getPortfolioItems } from '@/sanity/lib/fetchPortfolio';
-import { portfolioData as staticData, PortfolioCategory } from '@/data/portfolioData';
+import { PortfolioCategory } from '@/data/portfolioData';
 import styles from './portfolioPage.module.css';
 
 export default function PortfolioPage() {
-  const [items, setItems] = useState<PortfolioCategory[]>(staticData);
+  const [items, setItems] = useState<PortfolioCategory[]>([]);
   const [searchQuery, setSearchQuery] = useState('');
   const [activeFilter, setActiveFilter] = useState('all');
   const [selectedCategory, setSelectedCategory] = useState<PortfolioCategory | null>(null);
@@ -142,10 +142,6 @@ export default function PortfolioPage() {
                     className={`${styles.gridItem} ${item.sizeClass ? styles[item.sizeClass] : ''} ${styles[item.hoverClass]}`}
                     onClick={() => handleItemClick(item)}
                   >
-                    {/* Category Tag Badge */}
-                    <div className={`${styles.cardTag} ${styles[item.tagClass]}`}>
-                      {item.filterLabel}
-                    </div>
 
                     <Image
                       src={item.coverImage}

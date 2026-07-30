@@ -2,7 +2,7 @@ import { client } from './client'
 import { portfolioQuery } from './queries'
 import { urlForImage } from './image'
 import { isSanityConfigured } from '../env'
-import { portfolioData as staticPortfolioData, PortfolioCategory } from '@/data/portfolioData'
+import { PortfolioCategory } from '@/data/portfolioData'
 
 interface SanityImageReference {
   asset?: {
@@ -20,6 +20,7 @@ interface SanityPortfolioItem {
   desc?: string;
   coverImage?: SanityImageReference;
   galleryImages?: SanityImageReference[];
+  galleryVideos?: { asset?: { _id?: string; url?: string } }[];
   tagClass?: string;
   hoverClass?: string;
   textClass?: string;
@@ -28,9 +29,22 @@ interface SanityPortfolioItem {
   filterLabel?: string;
 }
 
+function isValidImageAsset(img: unknown): boolean {
+  if (!img || typeof img !== 'object') return false
+  const asset = (img as { asset?: { _ref?: string; _id?: string } }).asset
+  if (!asset) return false
+  const ref = asset._ref || asset._id || ''
+  if (!ref) return false
+  if (ref.startsWith('file-') || ref.includes('.mp4') || ref.includes('.mov') || ref.includes('.webm')) {
+    return false
+  }
+  return ref.startsWith('image-')
+}
+
 export async function getPortfolioItems(): Promise<PortfolioCategory[]> {
   if (!isSanityConfigured) {
-    return staticPortfolioData
+    console.warn('Sanity is not configured. Returning empty portfolio items.')
+    return []
   }
 
   try {
@@ -39,9 +53,21 @@ export async function getPortfolioItems(): Promise<PortfolioCategory[]> {
     if (sanityItems && sanityItems.length > 0) {
       const mappedSanityItems: PortfolioCategory[] = (sanityItems as SanityPortfolioItem[]).map((item) => {
         const coverUrl = item.coverImage ? urlForImage(item.coverImage)?.url() || '' : ''
-        const galleryUrls = item.galleryImages
-          ? item.galleryImages.map((img) => urlForImage(img)?.url() || '').filter(Boolean)
-          : [coverUrl]
+        
+        const photoUrls = item.galleryImages
+          ? item.galleryImages.map((img) => {
+              if (isValidImageAsset(img)) {
+                return urlForImage(img)?.url() || ''
+              }
+              return img.asset?.url || ''
+            }).filter(Boolean)
+          : []
+
+        const videoUrls = item.galleryVideos
+          ? item.galleryVideos.map((vid) => vid.asset?.url || '').filter(Boolean)
+          : []
+
+        const galleryUrls = [...photoUrls, ...videoUrls]
 
         return {
           category: item.category || item.title,
@@ -59,15 +85,11 @@ export async function getPortfolioItems(): Promise<PortfolioCategory[]> {
         }
       })
 
-      // Combine Sanity items at the front with static items, avoiding duplicate titles
-      const sanityTitles = new Set(mappedSanityItems.map(i => i.title.toLowerCase()))
-      const filteredStatic = staticPortfolioData.filter(s => !sanityTitles.has(s.title.toLowerCase()))
-
-      return [...mappedSanityItems, ...filteredStatic]
+      return mappedSanityItems
     }
   } catch (error) {
-    console.warn('Sanity fetch skipped or failed, falling back to static data:', error)
+    console.error('Failed to fetch portfolio items from Sanity:', error)
   }
 
-  return staticPortfolioData
+  return []
 }
