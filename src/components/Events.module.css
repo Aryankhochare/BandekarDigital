@@ -255,6 +255,16 @@
   .eventCard {
     height: 440px;
   }
+  .cardContent {
+    padding: 24px;
+  }
+  .cardTitle {
+    font-size: 1.45rem;
+    margin-bottom: 8px;
+  }
+  .cardLocation {
+    margin-bottom: 12px;
+  }
   .eventCard .cardDesc {
     opacity: 0.9;
     height: auto;

@@ -156,13 +156,12 @@ export default function EventsPage() {
 
               {/* Event Type / Theme Dropdown */}
               <div className={styles.filterGroup}>
-                <span className={styles.filterGroupLabel}>Event Category:</span>
                 <select
                   value={selectedType}
                   onChange={(e) => setSelectedType(e.target.value)}
                   className={styles.selectDropdown}
                 >
-                  <option value="all">All Event Types</option>
+                  <option value="all">Events</option>
                   {eventCategories.map((cat) => (
                     <option key={cat.value} value={cat.value}>
                       {cat.label}
