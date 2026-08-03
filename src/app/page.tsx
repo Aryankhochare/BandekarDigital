@@ -1,4 +1,5 @@
 import Loader from '@/components/Loader';
+import Navbar from '@/components/Navbar';
 import Hero from '@/components/Hero';
 import Portfolio from '@/components/Portfolio';
 import BeforeAfter from '@/components/BeforeAfter';
@@ -15,6 +16,9 @@ export default function Home() {
     <>
       {/* Creative Initial Screen Loader */}
       <Loader />
+
+      {/* Fixed Navigation Header */}
+      <Navbar />
 
       {/* Floating Background Glow Blobs */}
       <div className="bg-blobs-container">

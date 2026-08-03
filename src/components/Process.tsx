@@ -89,8 +89,10 @@ export default function Process() {
                 {step.icon}
               </div>
 
-              <h3 className={styles.stepTitle}>{step.title}</h3>
-              <p className={styles.stepDesc}>{step.desc}</p>
+              <div className={styles.stepTextContent}>
+                <h3 className={styles.stepTitle}>{step.title}</h3>
+                <p className={styles.stepDesc}>{step.desc}</p>
+              </div>
             </div>
           ))}
         </div>

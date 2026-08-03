@@ -1,6 +1,7 @@
 'use client';
 
 import { useEffect, useState, useRef } from 'react';
+import { createPortal } from 'react-dom';
 import Image from 'next/image';
 import styles from './GalleryModal.module.css';
 
@@ -30,6 +31,7 @@ export default function GalleryModal({ isOpen, category, onClose }: GalleryModal
   const [activeImageIndex, setActiveImageIndex] = useState<number | null>(null);
   const [loadedImages, setLoadedImages] = useState<Record<number, boolean>>({});
   const [prevCategoryTitle, setPrevCategoryTitle] = useState<string | null>(category?.title || null);
+  const [mounted, setMounted] = useState(false);
   const modalRef = useRef<HTMLDivElement>(null);
 
   const currentTitle = category?.title || null;
@@ -38,6 +40,11 @@ export default function GalleryModal({ isOpen, category, onClose }: GalleryModal
     setLoadedImages({});
     setActiveImageIndex(null);
   }
+
+  // Set mounted on client side
+  useEffect(() => {
+    setMounted(true);
+  }, []);
 
   // Lock body scroll when modal is open
   useEffect(() => {
@@ -77,7 +84,7 @@ export default function GalleryModal({ isOpen, category, onClose }: GalleryModal
     return () => window.removeEventListener('keydown', handleKeyDown);
   }, [isOpen, activeImageIndex, category, onClose]);
 
-  if (!isOpen || !category) return null;
+  if (!isOpen || !category || !mounted) return null;
 
   const handleImageLoad = (index: number) => {
     setLoadedImages((prev) => ({ ...prev, [index]: true }));
@@ -97,7 +104,7 @@ export default function GalleryModal({ isOpen, category, onClose }: GalleryModal
     );
   };
 
-  return (
+  return createPortal(
     <div className={styles.modalOverlay} onClick={onClose} ref={modalRef}>
       {/* Background Glow Blobs for aesthetics */}
       <div className={styles.modalBgBlobs}>
@@ -223,6 +230,7 @@ export default function GalleryModal({ isOpen, category, onClose }: GalleryModal
           </button>
         </div>
       )}
-    </div>
+    </div>,
+    document.body
   );
 }

@@ -138,10 +138,15 @@
   overflow-x: auto;
   padding-bottom: 4px;
   scrollbar-width: none; /* Firefox */
+  -webkit-overflow-scrolling: touch;
 }
 
 .filterControls::-webkit-scrollbar {
   display: none; /* Safari & Chrome */
+}
+
+.filterControls li {
+  flex-shrink: 0;
 }
 
 .filterBtn {
@@ -483,6 +488,13 @@
   }
 }
 
+@media (max-width: 900px) {
+  .controlsSection {
+    position: relative;
+    top: 0;
+  }
+}
+
 @media (max-width: 768px) {
   .pageHero {
     padding: 60px 0 20px 0;
@@ -504,6 +516,7 @@
 
   .itemDesc {
     opacity: 0.8;
+    max-height: 120px;
     height: auto;
     transform: translateY(0);
     max-width: 100%;

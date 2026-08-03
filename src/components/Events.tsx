@@ -44,7 +44,7 @@ export default function Events() {
 
         {/* Events Grid */}
         <div className={styles.eventsGrid}>
-          {events.slice(0, 3).map((event) => (
+          {events.slice(0, 4).map((event) => (
             <div
               key={event.title}
               className={`${styles.eventCard} ${styles[event.hoverClass]}`}

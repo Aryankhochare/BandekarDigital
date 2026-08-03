@@ -353,10 +353,35 @@
   .sectionHeader {
     flex-direction: column;
     align-items: flex-start;
+    gap: 16px;
   }
   
   .mainTitle {
     font-size: 2.2rem;
+  }
+
+  .filterControls {
+    width: 100%;
+    overflow-x: auto;
+    white-space: nowrap;
+    padding: 8px 12px;
+    border-radius: 20px;
+    scrollbar-width: none;
+    -webkit-overflow-scrolling: touch;
+  }
+
+  .filterControls::-webkit-scrollbar {
+    display: none;
+  }
+
+  .filterControls li {
+    flex-shrink: 0;
+  }
+
+  .filterBtn {
+    padding: 6px 16px;
+    font-size: 0.8rem;
+    white-space: nowrap;
   }
   
   .portfolioGrid {
@@ -371,6 +396,7 @@
   
   .itemDesc {
     opacity: 0.8;
+    max-height: 100px;
     transform: translateY(0);
     max-width: 100%;
   }

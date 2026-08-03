@@ -2,7 +2,6 @@
 
 import { useState, useEffect, useRef } from 'react';
 import styles from './Hero.module.css';
-import Navbar from './Navbar';
 
 function Counter({ end, duration = 2000, suffix = '' }: { end: number; duration?: number; suffix?: string }) {
   const [count, setCount] = useState(0);
@@ -56,9 +55,6 @@ function Counter({ end, duration = 2000, suffix = '' }: { end: number; duration?
 export default function Hero() {
   return (
     <section className={styles.heroSection} id="home">
-      {/* Reusable Navbar */}
-      <Navbar />
-
       {/* Background Video */}
       <video
         autoPlay

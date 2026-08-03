@@ -102,6 +102,24 @@
   word-break: break-all;
 }
 
+.emailLink {
+  display: block;
+  font-size: 0.8rem;
+  font-weight: 700;
+  color: #fff;
+  text-decoration: none;
+  word-break: break-all;
+  transition: all 0.3s ease;
+  line-height: 1.4;
+  margin-bottom: 2px;
+}
+
+.emailLink:hover {
+  color: var(--accent-purple);
+  text-decoration: none;
+  text-shadow: 0 0 8px rgba(176, 38, 255, 0.4);
+}
+
 /* Right Column Form */
 .formCard {
   background: rgba(15, 15, 15, 0.5);

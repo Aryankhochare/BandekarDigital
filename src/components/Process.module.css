@@ -149,6 +149,14 @@
   background: rgba(0, 255, 102, 0.02);
 }
 
+.stepTextContent {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  align-items: center;
+  text-align: center;
+}
+
 .stepTitle {
   font-size: 1.2rem;
   font-weight: 700;
@@ -195,6 +203,11 @@
     align-items: center;
     border-bottom: 1px solid rgba(255, 255, 255, 0.02);
     padding-bottom: 20px;
+  }
+  .stepTextContent {
+    align-items: flex-start;
+    text-align: left;
+    flex: 1;
   }
   .stepCard:last-child {
     border-bottom: none;
