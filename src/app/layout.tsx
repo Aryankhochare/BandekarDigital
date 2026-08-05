@@ -16,6 +16,11 @@ export const metadata: Metadata = {
   title: "Bandekar's Digital Imaging | Premium Neon Signs & Large Format Printing",
   description: "Transform your brand with Bandekar's Digital Imaging. We specialize in high-end neon signs, LED displays, acrylic signs, vehicle wraps, and large format digital printing.",
   keywords: ["Bandekar's Digital Imaging", "neon signs", "LED displays", "acrylic signs", "vehicle wraps", "large format printing", "digital signage", "sign board design", "printing solutions"],
+  icons: {
+    icon: "https://cdn.sanity.io/files/7pct1njc/production/47c5b894e9cf34ab2dab6fcf67a81a9cf3e3352c.jpg",
+    shortcut: "https://cdn.sanity.io/files/7pct1njc/production/47c5b894e9cf34ab2dab6fcf67a81a9cf3e3352c.jpg",
+    apple: "https://cdn.sanity.io/files/7pct1njc/production/47c5b894e9cf34ab2dab6fcf67a81a9cf3e3352c.jpg",
+  },
   openGraph: {
     title: "Bandekar's Digital Imaging | Premium Neon Signs & Large Format Printing",
     description: "Transform your brand with high-end neon signs, LED displays, acrylic signs, vehicle wraps, and large format digital printing. Printing ideas into reality.",
