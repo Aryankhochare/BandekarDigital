@@ -1,4 +1,5 @@
 export interface EventItem {
+  _id?: string;
   title: string;
   client: string;
   date: string;

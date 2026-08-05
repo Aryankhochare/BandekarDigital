@@ -1,6 +1,7 @@
 import assetsData from './assetsData.json';
 
 export interface PortfolioCategory {
+  _id?: string;
   category: string; // original folder name
   title: string;     // user-friendly title
   desc: string;      // description of work

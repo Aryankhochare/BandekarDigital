@@ -136,9 +136,9 @@ export default function PortfolioPage() {
           <div className="container">
             {filteredItems.length > 0 ? (
               <div className={styles.portfolioGrid}>
-                {filteredItems.map((item) => (
+                {filteredItems.map((item, idx) => (
                   <div
-                    key={item.title + item.category}
+                    key={item._id || `${item.title}-${item.category}-${idx}`}
                     className={`${styles.gridItem} ${item.sizeClass ? styles[item.sizeClass] : ''} ${styles[item.hoverClass]}`}
                     onClick={() => handleItemClick(item)}
                   >

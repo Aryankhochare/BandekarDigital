@@ -23,11 +23,11 @@ export default function AboutPage() {
         <section className={styles.aboutHero}>
           <div className="container">
             <div className={styles.heroContent}>
-              <span className={styles.subTitle}>Our Legacy & Vision</span>
-              <h1 className={styles.mainTitle}>Crafting Visual Brands Across Goa</h1>
+              <span className={styles.subTitle}>About Us</span>
+              <h1 className={styles.mainTitle}>Bandekar&apos;s Digital Imaging</h1>
               <p className={styles.heroDesc}>
-                We combine state-of-the-art print technology with architectural craftsmanship. 
-                From complex corporate branding to custom glowing neon art, we translate concepts into physical reality.
+                Established in 2007, Bandekar&apos;s Digital Imaging began as a small digital printing firm with a clear vision 
+                — to deliver creative, reliable and high-quality printing, advertising and event solutions.
               </p>
             </div>
           </div>
@@ -38,23 +38,27 @@ export default function AboutPage() {
           <div className="container">
             <div className={styles.narrativeGrid}>
               <div className={styles.narrativeText}>
-                <span className={styles.sectionLabel}>Who We Are</span>
-                <h2>15 Years of Engineering Visual Excellence</h2>
+                <span className={styles.sectionLabel}>Our History & Growth</span>
+                <h2>Bringing Ideas to Life Since 2007</h2>
                 <p>
-                  Established in Madgaon, Goa, Bandekar’s Digital Imaging started with a single promise: 
-                  to deliver precision-engineered printing and architectural signboards that command attention. 
-                  Today, we are Goa’s leading branding partner, serving hotels, banks, governmental offices, and local retail stores.
+                  Over the years, we have grown into a full-service printing, signage, advertising and event management company, 
+                  supported by an experienced team of creative professionals and comprehensive in-house production facilities. 
                 </p>
                 <p>
-                  We operate a specialized production facility equipped with CNC laser cutters, high-fidelity UV printing presses, 
-                  and custom neon fabrication benches. Our design-to-installation workflow ensures every board, wrap, or banner 
-                  maintains the highest standards of durability and vibrancy.
+                  Our services include digital and offset printing, UV printing, flatbed UV printing, indoor and outdoor advertising, 
+                  billboards, LED channel letters, shop signage, acrylic and embossed lettering, laser cutting, fabric printing, 
+                  personalised gifting, corporate events and government events.
+                </p>
+                <p>
+                  We believe that creativity, quality and dependable service are the foundations of every successful project. 
+                  Our commitment to excellence, attention to detail and comprehensive one-stop solutions enable us to add meaningful 
+                  value to our clients and help their organisations move forward with confidence.
                 </p>
               </div>
               <div className={styles.statsCardWrapper}>
                 <div className={styles.statsGlassCard}>
                   <div className={styles.statsCardItem}>
-                    <h3>15+</h3>
+                    <h3>19+</h3>
                     <p>Years of Service</p>
                   </div>
                   <div className={styles.statsCardItem}>
@@ -78,7 +82,7 @@ export default function AboutPage() {
               {/* CEO Image Side */}
               <div className={styles.ceoImageContainer}>
                 <Image
-                  src="https://images.unsplash.com/photo-1560250097-0b93528c311a?q=80&w=600&auto=format&fit=crop"
+                  src="https://cdn.sanity.io/files/7pct1njc/production/01a377bbc850f970bbc9e62d6602e69ed4796a07.jpeg"
                   alt="Shailesh Bandekar - CEO & Founder"
                   fill
                   sizes="(max-width: 768px) 100vw, 450px"
@@ -99,15 +103,13 @@ export default function AboutPage() {
                 
                 <div className={styles.ceoQuotes}>
                   <p>
-                    &ldquo;Every custom board we produce represents our client&apos;s hard work and dream. 
-                    Our mission isn&apos;t just to print; it&apos;s to shape physical structures and materials 
-                    that carry your brand name with absolute pride and perfection.&rdquo;
+                    &ldquo;Together, we bring ideas to life through advertising, design and memorable events.&rdquo;
                   </p>
                 </div>
                 
                 <p className={styles.ceoBio}>
                   Shailesh Bandekar founded Bandekar’s Digital Imaging with a focus on custom manufacturing 
-                  and high-fidelity print engineering. With over 15 years of technical expertise in materials, 
+                  and high-fidelity print engineering. With over 19 years of technical expertise in materials, 
                   accurate color matching, and digital imaging, he continues to take a hands-on approach to client designs.
                 </p>
                 <p className={styles.ceoBio}>
@@ -120,12 +122,79 @@ export default function AboutPage() {
           </div>
         </section>
 
+        {/* Comprehensive Services Brochure List Section */}
+        <section className={styles.servicesBrochureSection}>
+          <div className="container">
+            <div className={styles.brochureHeader}>
+              <span className={styles.brochureLabel}>Our Capabilities</span>
+              <h2>Comprehensive Indoor & Outdoor Services</h2>
+              <p>Explore our complete list of advertising, printing, and personalized gifting solutions.</p>
+            </div>
+
+            <div className={styles.brochureGrid}>
+              {/* Column 1 */}
+              <div className={styles.brochureColumn}>
+                <div className={styles.columnTitleBox} style={{ borderLeftColor: 'var(--accent-cyan)' }}>
+                  <h3 style={{ color: 'var(--accent-cyan)' }}>Indoor & Outdoor Advertising</h3>
+                </div>
+                <ul className={styles.brochureList}>
+                  <li>LED Signage</li>
+                  <li>LED Channel Letters</li>
+                  <li>Shop Signage</li>
+                  <li>Acrylic & Embossed Lettering</li>
+                  <li>Banners</li>
+                  <li>Hoarding & Billboards</li>
+                  <li>Vinyl & Flex</li>
+                  <li>Eco-solvent Printing</li>
+                  <li>Plate Printing</li>
+                </ul>
+              </div>
+
+              {/* Column 2 */}
+              <div className={styles.brochureColumn}>
+                <div className={styles.columnTitleBox} style={{ borderLeftColor: 'var(--accent-purple)' }}>
+                  <h3 style={{ color: 'var(--accent-purple)' }}>Marketing & Corporate Print</h3>
+                </div>
+                <ul className={styles.brochureList}>
+                  <li>Posters, Brochures & Flyers</li>
+                  <li>Business Cards & Letterheads</li>
+                  <li>Invitation, Birthday & Wedding Cards</li>
+                  <li>Certificates & Calendars</li>
+                  <li>Bill Books & Receipt Books</li>
+                  <li>Door Hangers</li>
+                  <li>Tickets & ID Cards</li>
+                  <li>Diaries & Catalogs</li>
+                  <li>Lottery Coupons</li>
+                </ul>
+              </div>
+
+              {/* Column 3 */}
+              <div className={styles.brochureColumn}>
+                <div className={styles.columnTitleBox} style={{ borderLeftColor: 'var(--accent-orange)' }}>
+                  <h3 style={{ color: 'var(--accent-orange)' }}>Specialized Custom Solutions</h3>
+                </div>
+                <ul className={styles.brochureList}>
+                  <li>Trophies & Awards</li>
+                  <li>Personalized Mugs & Gifting</li>
+                  <li>Lanyards</li>
+                  <li>Nylon Stamps</li>
+                  <li>Barcode & QR Code Standees</li>
+                  <li>Laser Engraving & Cutting</li>
+                  <li>Print-n-Cut Stickers</li>
+                  <li>Shape Cutting Cards</li>
+                  <li>Fabric & DTF Printing</li>
+                </ul>
+              </div>
+            </div>
+          </div>
+        </section>
+
         {/* Core Pillars / Values Section */}
         <section className={styles.pillarsSection}>
           <div className="container">
             <div className={styles.pillarsHeader}>
               <span className={styles.pillarsSubtitle}>Our Values</span>
-              <h2 className={styles.pillarsTitle}>The Pillars of Our Craft</h2>
+              <h2 className={styles.pillarsTitle}>The Foundations of Our Projects</h2>
             </div>
             
             <div className={styles.pillarsGrid}>
@@ -136,8 +205,8 @@ export default function AboutPage() {
                     <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z" />
                   </svg>
                 </div>
-                <h3>Precision Standards</h3>
-                <p>We use state-of-the-art laser cutters and technical design mockups to ensure exact dimensions, material fits, and alignment.</p>
+                <h3>Creativity</h3>
+                <p>We blend design aesthetics with technical execution to produce signs and prints that represent your brand name with absolute pride.</p>
               </div>
 
               {/* Pillar 2 */}
@@ -148,8 +217,8 @@ export default function AboutPage() {
                     <path d="m4.93 4.93 14.14 14.14" />
                   </svg>
                 </div>
-                <h3>Exact Color Matching</h3>
-                <p>We manage color reproduction strictly, matching difficult color palettes and brand hues across a variety of substrates.</p>
+                <h3>Premium Quality</h3>
+                <p>We manage color reproduction strictly, matching challenging color palettes across a variety of durable substrates.</p>
               </div>
 
               {/* Pillar 3 */}
@@ -162,7 +231,7 @@ export default function AboutPage() {
                     <path d="M16 3.13a4 4 0 0 1 0 7.75" />
                   </svg>
                 </div>
-                <h3>Local Goa Expertise</h3>
+                <h3>Dependable Service</h3>
                 <p>Our experienced team delivers secure sign installation and durable facade boards suitable for Goan weather conditions.</p>
               </div>
             </div>

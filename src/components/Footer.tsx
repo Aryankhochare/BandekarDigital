@@ -29,24 +29,16 @@ export default function Footer() {
             </p>
             <div className={styles.socials}>
               {/* Facebook */}
-              <a href="https://www.facebook.com/p/Bandekars-Digital-Imaging-100071961461644/" className={styles.socialIcon} aria-label="Facebook">
+              <a href="https://www.facebook.com/p/Bandekars-Digital-Imaging-100071961461644/" className={styles.socialIcon} aria-label="Facebook" target="_blank" rel="noopener noreferrer">
                 <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
                   <path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z" />
                 </svg>
               </a>
               {/* Instagram */}
-              <a href="https://www.instagram.com/bandekardigitalimaging/" className={styles.socialIcon} aria-label="Instagram">
+              <a href="https://www.instagram.com/bandekardigitalimaging/" className={styles.socialIcon} aria-label="Instagram" target="_blank" rel="noopener noreferrer">
                 <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
                   <rect width="20" height="20" x="2" y="2" rx="5" ry="5" />
                   <path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37zM17.5 6.5h.01" />
-                </svg>
-              </a>
-              {/* LinkedIn */}
-              <a href="#" className={styles.socialIcon} aria-label="LinkedIn">
-                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-                  <path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z" />
-                  <rect width="4" height="12" x="2" y="9" />
-                  <circle cx="4" cy="4" r="2" />
                 </svg>
               </a>
             </div>
@@ -56,12 +48,12 @@ export default function Footer() {
           <div>
             <h4 className={styles.colTitle}>Company</h4>
             <ul className={styles.linksList}>
-              <li className={styles.linkItem}><a href="#home">Home</a></li>
-              <li className={styles.linkItem}><a href="#portfolio">Featured Work</a></li>
-              <li className={styles.linkItem}><a href="#events">Our Events</a></li>
-              <li className={styles.linkItem}><a href="#transformations">Before & After</a></li>
-              <li className={styles.linkItem}><a href="#process">Work Flow</a></li>
-              <li className={styles.linkItem}><a href="#contact">Contact</a></li>
+              <li className={styles.linkItem}><a href="/#home">Home</a></li>
+              <li className={styles.linkItem}><a href="/portfolio">Featured Work</a></li>
+              <li className={styles.linkItem}><a href="/events">Our Events</a></li>
+              <li className={styles.linkItem}><a href="/#transformations">Before & After</a></li>
+              <li className={styles.linkItem}><a href="/#process">Work Flow</a></li>
+              <li className={styles.linkItem}><a href="/about">About Us</a></li>
             </ul>
           </div>
 
@@ -81,7 +73,7 @@ export default function Footer() {
 
           {/* Contact details */}
           <div>
-            <h4 className={styles.colTitle}>Headquarters</h4>
+            <h4 className={styles.colTitle}>Main Office</h4>
             <div className={styles.contactDetails}>
               <div className={styles.contactItem}>
                 <svg className={styles.contactIcon} width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
@@ -94,7 +86,7 @@ export default function Footer() {
                   rel="noopener noreferrer" 
                   className={styles.googleBusinessLink}
                 >
-                  Plot No. 45, Margao Industrial Estate, Goa, 403601 <br />
+                  Varde Valaulikar Rd, Pajifond, Madgaon, Goa 403601 <br />
                   <span className={styles.googleMapsBadge}>View Google Business Profile →</span>
                 </a>
               </div>
@@ -103,8 +95,8 @@ export default function Footer() {
                   <rect width="20" height="16" x="2" y="4" rx="2" />
                   <path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7" />
                 </svg>
-                <a href="mailto:info@bandekarsdigital.com" className={styles.footerEmailLink}>
-                  info@bandekarsdigital.com
+                <a href="mailto:bandekarsdigitalimaging@gmail.com" className={styles.footerEmailLink}>
+                  bandekarsdigitalimaging@gmail.com
                 </a>
               </div>
               <div className={styles.contactItem}>

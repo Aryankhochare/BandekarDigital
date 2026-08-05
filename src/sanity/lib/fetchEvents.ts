@@ -15,6 +15,7 @@ interface SanityImageReference {
 }
 
 interface SanityEventItem {
+  _id?: string;
   title: string;
   order?: number;
   client?: string;
@@ -72,6 +73,7 @@ export async function getEventItems(): Promise<EventItem[]> {
         const galleryUrls = [...photoUrls, ...videoUrls]
 
         return {
+          _id: item._id,
           title: item.title,
           client: item.client || '',
           date: item.date || '',

@@ -5,12 +5,23 @@ import Image from 'next/image';
 import styles from './Loader.module.css';
 
 export default function Loader() {
+  const [mounted, setMounted] = useState(false);
   const [visible, setVisible] = useState(true);
   const [fade, setFade] = useState(false);
 
   useEffect(() => {
+    setMounted(true);
+
+    // Check if loader has run in this session
+    const hasRun = sessionStorage.getItem('loader-has-run');
+    if (hasRun) {
+      setVisible(false);
+      return;
+    }
+
     // Lock scrolling on mount
     document.body.style.overflow = 'hidden';
+    sessionStorage.setItem('loader-has-run', 'true');
 
     const timer = setTimeout(() => {
       setFade(true);
@@ -18,6 +29,17 @@ export default function Loader() {
         setVisible(false);
         // Restore scrolling on unmount
         document.body.style.overflow = 'unset';
+
+        // Scroll to hash if present after loader hides
+        if (window.location.hash) {
+          const id = window.location.hash.substring(1);
+          const element = document.getElementById(id);
+          if (element) {
+            setTimeout(() => {
+              element.scrollIntoView({ behavior: 'smooth' });
+            }, 50);
+          }
+        }
       }, 800); // Wait for translation to complete
       return () => clearTimeout(removeTimer);
     }, 2800); // Loader displays for 2.8s
@@ -28,7 +50,7 @@ export default function Loader() {
     };
   }, []);
 
-  if (!visible) return null;
+  if (!mounted || !visible) return null;
 
   const titleText = "BANDEKAR'S";
 

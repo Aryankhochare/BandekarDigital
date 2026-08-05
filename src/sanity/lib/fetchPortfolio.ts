@@ -15,6 +15,7 @@ interface SanityImageReference {
 }
 
 interface SanityPortfolioItem {
+  _id?: string;
   title: string;
   order?: number;
   category?: string;
@@ -71,6 +72,7 @@ export async function getPortfolioItems(): Promise<PortfolioCategory[]> {
         const galleryUrls = [...photoUrls, ...videoUrls]
 
         return {
+          _id: item._id,
           category: item.category || item.title,
           title: item.title,
           desc: item.desc || '',

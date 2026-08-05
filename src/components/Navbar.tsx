@@ -50,18 +50,18 @@ export default function Navbar() {
             </Link>
           </li>
           <li>
-            <Link href={pathname === '/about' ? '#about-page' : '/about'} className={styles.navLink}>
-              About Us
-            </Link>
-          </li>
-          <li>
-            <Link href={getLink('#process')} className={styles.navLink}>
-              Process
+            <Link href={pathname === '/events' ? '#events-page' : '/events'} className={styles.navLink}>
+              Events
             </Link>
           </li>
           <li>
             <Link href={getLink('#contact')} className={styles.navLink}>
               Contact
+            </Link>
+          </li>
+          <li>
+            <Link href={pathname === '/about' ? '#about-page' : '/about'} className={styles.navLink}>
+              About Us
             </Link>
           </li>
         </ul>
@@ -91,18 +91,18 @@ export default function Navbar() {
               </Link>
             </li>
             <li>
-              <Link href="/about" onClick={toggleMobileMenu}>
-                About Us
-              </Link>
-            </li>
-            <li>
-              <Link href={getLink('#process')} onClick={toggleMobileMenu}>
-                Process
+              <Link href="/events" onClick={toggleMobileMenu}>
+                Events
               </Link>
             </li>
             <li>
               <Link href={getLink('#contact')} onClick={toggleMobileMenu}>
                 Contact
+              </Link>
+            </li>
+            <li>
+              <Link href="/about" onClick={toggleMobileMenu}>
+                About Us
               </Link>
             </li>
             <li>

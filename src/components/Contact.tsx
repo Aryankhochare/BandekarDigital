@@ -328,7 +328,7 @@ export default function Contact() {
                     name="phone"
                     value={formData.phone}
                     onChange={handleInputChange}
-                    placeholder="+91 98221 XXXXX"
+                    placeholder="+91 XXXXX XXXXX"
                     className={styles.formInput}
                   />
                 </div>

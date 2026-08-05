@@ -178,9 +178,9 @@ export default function EventsPage() {
           <div className="container">
             {filteredEvents.length > 0 ? (
               <div className={styles.eventsGrid}>
-                {filteredEvents.map((event) => (
+                {filteredEvents.map((event, idx) => (
                   <div
-                    key={event.title}
+                    key={event._id || `${event.title}-${idx}`}
                     className={`${styles.eventCard} ${styles[event.hoverClass]}`}
                     onClick={() => handleCardClick(event)}
                   >

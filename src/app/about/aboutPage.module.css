@@ -334,6 +334,103 @@
   color: var(--text-secondary);
 }
 
+/* Services Brochure List */
+.servicesBrochureSection {
+  padding: 80px 0;
+  border-top: 1px solid rgba(255, 255, 255, 0.02);
+  background: rgba(5, 5, 5, 0.2);
+}
+
+.brochureHeader {
+  text-align: center;
+  max-width: 600px;
+  margin: 0 auto 50px auto;
+}
+
+.brochureLabel {
+  font-size: 0.85rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.25em;
+  color: var(--accent-purple);
+  margin-bottom: 12px;
+  display: block;
+}
+
+.brochureHeader h2 {
+  font-size: 2.4rem;
+  font-weight: 800;
+  line-height: 1.2;
+  color: #fff;
+  margin-bottom: 16px;
+}
+
+.brochureHeader p {
+  color: var(--text-secondary);
+  font-size: 0.95rem;
+  line-height: 1.5;
+}
+
+.brochureGrid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 40px;
+}
+
+.brochureColumn {
+  background: rgba(255, 255, 255, 0.01);
+  border: 1px solid rgba(255, 255, 255, 0.03);
+  border-radius: 24px;
+  padding: 30px;
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  transition: all 0.3s ease;
+}
+
+.brochureColumn:hover {
+  background: rgba(255, 255, 255, 0.02);
+  border-color: rgba(255, 255, 255, 0.06);
+}
+
+.columnTitleBox {
+  border-left: 3px solid;
+  padding-left: 12px;
+  margin-bottom: 24px;
+}
+
+.columnTitleBox h3 {
+  font-size: 1.15rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+
+.brochureList {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.brochureList li {
+  font-size: 0.9rem;
+  color: var(--text-secondary);
+  position: relative;
+  padding-left: 16px;
+  line-height: 1.4;
+}
+
+.brochureList li::before {
+  content: "•";
+  position: absolute;
+  left: 0;
+  top: 0;
+  color: rgba(255, 255, 255, 0.25);
+  font-size: 1.1rem;
+}
+
 /* About CTA */
 .aboutCta {
   padding: 40px 0 100px 0;
@@ -432,6 +529,11 @@
     grid-template-columns: 1fr;
     gap: 20px;
   }
+
+  .brochureGrid {
+    grid-template-columns: 1fr;
+    gap: 24px;
+  }
 }
 
 @media (max-width: 600px) {
@@ -462,6 +564,10 @@
   }
 
   .ctaCard h2 {
+    font-size: 1.8rem;
+  }
+
+  .brochureHeader h2 {
     font-size: 1.8rem;
   }
 }
