@@ -104,7 +104,7 @@
 
 .emailLink {
   display: block;
-  font-size: 0.8rem;
+  font-size: 0.75rem;
   font-weight: 700;
   color: #fff;
   text-decoration: none;
@@ -118,6 +118,24 @@
   color: var(--accent-purple);
   text-decoration: none;
   text-shadow: 0 0 8px rgba(176, 38, 255, 0.4);
+}
+
+.phoneLink {
+  display: block;
+  font-size: 0.8rem;
+  font-weight: 700;
+  color: #fff;
+  text-decoration: none;
+  word-break: break-all;
+  transition: all 0.3s ease;
+  line-height: 1.4;
+  margin-bottom: 2px;
+}
+
+.phoneLink:hover {
+  color: var(--accent-orange);
+  text-decoration: none;
+  text-shadow: 0 0 8px rgba(255, 138, 0, 0.4);
 }
 
 /* Right Column Form */

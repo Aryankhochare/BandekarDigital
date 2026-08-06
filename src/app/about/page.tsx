@@ -75,7 +75,7 @@ export default function AboutPage() {
           </div>
         </section>
 
-        {/* CEO Section (Shailesh Bandekar Profile) */}
+        {/* CEO Section (Shailesh R. Bandekar Profile) */}
         <section className={styles.ceoSection}>
           <div className="container">
             <div className={styles.ceoCard}>
@@ -83,7 +83,7 @@ export default function AboutPage() {
               <div className={styles.ceoImageContainer}>
                 <Image
                   src="https://cdn.sanity.io/files/7pct1njc/production/01a377bbc850f970bbc9e62d6602e69ed4796a07.jpeg"
-                  alt="Shailesh Bandekar - CEO & Founder"
+                  alt="Shailesh R. Bandekar - CEO & Founder"
                   fill
                   sizes="(max-width: 768px) 100vw, 450px"
                   className={styles.ceoImage}
@@ -91,15 +91,15 @@ export default function AboutPage() {
                 />
                 <div className={styles.ceoImageGlow}></div>
                 <div className={styles.ceoBadge}>
-                  <span>Founder & CEO</span>
+                  <span>Director</span>
                 </div>
               </div>
 
               {/* CEO Details Side */}
               <div className={styles.ceoInfo}>
                 <span className={styles.ceoLabel}>Leadership</span>
-                <h2 className={styles.ceoName}>Shailesh Bandekar</h2>
-                <span className={styles.ceoTitle}>Founder & Chief Executive Officer</span>
+                <h2 className={styles.ceoName}>Shailesh R. Bandekar</h2>
+                <span className={styles.ceoTitle}>Director</span>
                 
                 <div className={styles.ceoQuotes}>
                   <p>
@@ -108,7 +108,7 @@ export default function AboutPage() {
                 </div>
                 
                 <p className={styles.ceoBio}>
-                  Shailesh Bandekar founded Bandekar’s Digital Imaging with a focus on custom manufacturing 
+                  Shailesh R. Bandekar founded Bandekar’s Digital Imaging with a focus on custom manufacturing 
                   and high-fidelity print engineering. With over 19 years of technical expertise in materials, 
                   accurate color matching, and digital imaging, he continues to take a hands-on approach to client designs.
                 </p>

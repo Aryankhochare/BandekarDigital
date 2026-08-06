@@ -29,6 +29,8 @@ export const metadata: Metadata = {
   },
 };
 
+import ScrollHandler from "@/components/ScrollHandler";
+
 export default function RootLayout({
   children,
 }: Readonly<{
@@ -36,7 +38,10 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en" className={`${inter.variable} ${outfit.variable}`} style={{ scrollBehavior: 'smooth' }}>
-      <body>{children}</body>
+      <body>
+        <ScrollHandler />
+        {children}
+      </body>
     </html>
   );
 }

@@ -4,12 +4,12 @@ import { useState, useEffect } from 'react';
 import Image from 'next/image';
 import Link from 'next/link';
 import styles from './Portfolio.module.css';
-import { PortfolioCategory } from '@/data/portfolioData';
+import { PortfolioCategory, portfolioData } from '@/data/portfolioData';
 import { getPortfolioItems } from '@/sanity/lib/fetchPortfolio';
 import GalleryModal from './GalleryModal';
 
 export default function Portfolio() {
-  const [items, setItems] = useState<PortfolioCategory[]>([]);
+  const [items, setItems] = useState<PortfolioCategory[]>(portfolioData);
   const [activeFilter, setActiveFilter] = useState<string>('all');
   const [selectedCategory, setSelectedCategory] = useState<PortfolioCategory | null>(null);
   const [isModalOpen, setIsModalOpen] = useState(false);
